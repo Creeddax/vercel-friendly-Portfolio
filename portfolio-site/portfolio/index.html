@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Web Developer Portfolio</title>
+  <meta name="description" content="Portfolio of a full-stack web developer — selected projects, skills, and contact details." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#top" class="nav-mark" id="nav-mark" aria-label="Home">MO</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="#contact">Start a project</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M3 5H17M3 10H17M3 15H17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="container">
+      <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <span class="hero-eyebrow"><span class="dot"></span><span id="hero-availability"></span></span>
+        <h1 class="hero-title">
+          <span id="hero-name"></span> — <span class="hero-role" id="hero-role"></span>
+        </h1>
+        <p class="hero-tagline" id="hero-tagline"></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#work">View work</a>
+          <a class="btn btn-secondary" href="#contact">Get in touch</a>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Location</span>
+            <span class="hero-meta-value" id="hero-location"></span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Resume</span>
+            <span class="hero-meta-value"><a id="hero-resume" href="#">Download PDF</a></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-layout">
+        <div>
+          <div class="section-head">
+            <span class="section-kicker">About</span>
+            <h2 class="section-title">How I work</h2>
+          </div>
+          <div class="about-bio" id="about-bio"></div>
+        </div>
+        <div>
+          <div class="section-head">
+            <span class="section-kicker">Toolkit</span>
+            <h2 class="section-title">Skills</h2>
+          </div>
+          <ul class="skills-list" id="skills-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Selected work</span>
+          <h2 class="section-title">Recent projects</h2>
+        </div>
+        <div class="project-list" id="project-list"></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Contact</span>
+          <h2 class="section-title">Let's work together</h2>
+        </div>
+        <div class="contact-panel">
+          <div class="contact-grid">
+            <div class="contact-item">
+              <span class="contact-label">Email</span>
+              <span class="contact-value"><a id="contact-email" href="#"></a></span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Phone</span>
+              <span class="contact-value"><a id="contact-phone" href="#"></a></span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Location</span>
+              <span class="contact-value" id="contact-location"></span>
+            </div>
+          </div>
+          <div class="social-row" id="social-row"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>&copy; <span id="footer-year"></span> <span id="footer-name"></span>. All rights reserved.</span>
+      <a class="footer-admin-link" href="admin/">Admin</a>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

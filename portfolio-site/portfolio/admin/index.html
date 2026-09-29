@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Admin — Edit site content</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <header class="admin-header">
+    <div class="container">
+      <span class="admin-brand">Site Admin <span class="tag">local preview</span></span>
+      <div class="admin-header-actions">
+        <a class="admin-link" href="../index.html" target="_blank" rel="noopener">View site ↗</a>
+        <button class="admin-link" id="logout-btn" style="display:none; border:none; background:none; cursor:pointer;">Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Login gate -->
+  <section class="login-screen" id="login-screen">
+    <form class="login-card" id="login-form">
+      <h1>Admin sign-in</h1>
+      <p>Enter the admin password to edit contact details, links, skills and projects.</p>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" autocomplete="current-password" required />
+      </div>
+      <div class="field" style="margin-bottom: var(--space-2);">
+        <span class="hint" id="login-error" style="color:#B91C1C; display:none;">Incorrect password. Try again.</span>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+      <p class="hint" style="margin-top:12px;">Default password is <code>admin123</code>. Change it in <code>admin/admin-auth.js</code> before you deploy.</p>
+    </form>
+  </section>
+
+  <!-- Dashboard -->
+  <main class="admin-main" id="dashboard" style="display:none;">
+    <div class="container admin-grid">
+      <div>
+        <div class="panel">
+          <h2>Profile</h2>
+          <div class="two-col">
+            <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" /></div>
+            <div class="field"><label for="f-role">Role / title</label><input id="f-role" type="text" /></div>
+          </div>
+          <div class="field"><label for="f-tagline">Tagline</label><input id="f-tagline" type="text" /></div>
+          <div class="field"><label for="f-bio">Bio</label><textarea id="f-bio"></textarea><span class="hint">Separate paragraphs with a blank line.</span></div>
+          <div class="two-col">
+            <div class="field"><label for="f-availability">Availability line</label><input id="f-availability" type="text" /></div>
+            <div class="field"><label for="f-location">Location (shown in hero)</label><input id="f-location" type="text" /></div>
+          </div>
+          <div class="field"><label for="f-resume">Resume URL</label><input id="f-resume" type="text" placeholder="https://..." /></div>
+        </div>
+
+        <div class="panel">
+          <h2>Contact details</h2>
+          <div class="two-col">
+            <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" /></div>
+            <div class="field"><label for="f-phone">Phone</label><input id="f-phone" type="tel" /></div>
+          </div>
+          <div class="field"><label for="f-contact-location">Location (shown in contact card)</label><input id="f-contact-location" type="text" /></div>
+        </div>
+
+        <div class="panel">
+          <h2>Social links</h2>
+          <div id="socials-list"></div>
+          <button type="button" class="add-row-btn" id="add-social">+ Add social link</button>
+        </div>
+
+        <div class="panel">
+          <h2>Skills</h2>
+          <div id="skills-list-admin"></div>
+          <button type="button" class="add-row-btn" id="add-skill">+ Add skill</button>
+        </div>
+
+        <div class="panel">
+          <h2>Projects</h2>
+          <div id="projects-list"></div>
+          <button type="button" class="add-row-btn" id="add-project">+ Add project</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="action-bar">
+          <div class="panel">
+            <h2>Save changes</h2>
+            <div class="status-msg" id="status-msg">Saved. Reload the site tab to see it live.</div>
+            <button type="button" class="btn btn-primary btn-block" id="save-btn">Save changes</button>
+            <p class="hint" style="margin: var(--space-2) 0;">Saves to this browser only, so you can preview instantly.</p>
+            <button type="button" class="btn btn-secondary btn-block" id="export-btn">Export data.js</button>
+            <p class="hint" style="margin: var(--space-2) 0;">Download the updated file, replace <code>js/data.js</code> in your project, then redeploy — that's what visitors will see.</p>
+            <button type="button" class="btn btn-danger-outline btn-block" id="reset-btn">Reset to defaults</button>
+          </div>
+          <div class="note-box">
+            <strong>How this works:</strong> edits here save to your browser (localStorage) so you can preview them on the "View site" tab instantly. They are not visible to other visitors until you export <code>data.js</code>, commit it, and redeploy on Vercel. For a shared, always-on admin (multiple editors, no redeploy needed), swap this for a small database like Vercel KV or Postgres later.
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="admin-auth.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
